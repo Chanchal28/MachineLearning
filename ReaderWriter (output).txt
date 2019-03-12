@@ -1,0 +1,6 @@
+Reader is running
+Reader is running
+Reader is exited
+Reader is exited
+Writer is running
+Writer has exited

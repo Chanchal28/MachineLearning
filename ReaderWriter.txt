@@ -1,0 +1,76 @@
+
+import java.util.concurrent.Semaphore;
+
+public class ReaderWriter
+{
+    static int readCount=0;                   //no. of readers reading
+    static Semaphore s=new Semaphore(1);
+    static Semaphore wrt=new Semaphore(1);
+        
+    static class Reader implements Runnable
+    {
+       
+        @Override
+        public void run()
+        {
+            try
+            {
+                s.acquire();
+                readCount++;
+                if(readCount==1)
+                    wrt.acquire();
+                s.release();
+                
+                System.out.println(Thread.currentThread().getName()+" is running");
+                Thread.sleep(500);
+                System.out.println(Thread.currentThread().getName()+" is exited");
+                
+                s.acquire();
+                readCount--;
+                if(readCount==0)
+                    wrt.release();
+                s.release();
+            }
+            catch (InterruptedException ex)
+            {
+                ex.printStackTrace();
+            }
+        }
+    }
+    
+    static class Writer implements Runnable
+    {
+        @Override
+        public void run()
+        {
+            try
+            {
+                wrt.acquire();
+                System.out.println(Thread.currentThread().getName()+" is running");
+                Thread.sleep(500);
+                wrt.release();
+                System.out.println(Thread.currentThread().getName()+" has exited");
+            } catch (InterruptedException ex)
+            {
+                ex.printStackTrace();
+            }
+        } 
+    }
+    
+    public static void main(String[] args)
+    {
+        Reader r=new Reader();
+        Writer w=new Writer();
+        Thread t1=new Thread(r);
+        Thread t2=new Thread(r);
+        Thread t3=new Thread(w);
+        
+        t1.setName("Reader");
+        t2.setName("Reader");
+        t3.setName("Writer");
+        
+        t1.start();
+        t2.start();
+        t3.start();
+    } 
+}
