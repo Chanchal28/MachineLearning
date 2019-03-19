@@ -1,0 +1,7 @@
+>>> snake_case="I'm snake case"
+
+>>> MACRO_CASE="I'm macro case"
+
+>>> camelCase="I'm camel case"
+
+>>> CapWords="I'm cap words"

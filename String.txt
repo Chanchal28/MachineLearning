@@ -1,0 +1,20 @@
+>>> print("Hello World")                          
+Hello World
+
+>>> a="Hello World"
+>>> print("a= ",a)
+a=  Hello World
+
+>>> a='Hello World'
+>>> print("a = ",a)
+a =  Hello World
+
+>>> a=Hello World
+SyntaxError: invalid syntax
+
+>>> a="'Hello World'"
+>>> print("a = ",a)
+a =  'Hello World'
+
+>>> a=""Hello World""
+SyntaxError: invalid syntax
