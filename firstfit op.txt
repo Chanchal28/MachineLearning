@@ -1,0 +1,30 @@
+
+Enter no. of block
+5
+Enter size of block 1
+1
+Enter size of block 2
+2
+Enter size of block 3
+3
+Enter size of block 4
+4
+Enter size of block 5
+5
+Enter no. of process
+5
+Enter size of process 1
+1
+Enter size of process 2
+2
+Enter size of process 3
+3
+Enter size of process 4
+4
+Enter size of process 5
+5
+Busy by 1
+Busy by 2
+Busy by 3
+Busy by 4
+Busy by 5
