@@ -1,0 +1,17 @@
+Output
+
+enter the no of process4
+ Burst time 3
+ Burst time 6
+ Burst time 4
+ Burst time 2
+turn arund  time
+2
+5
+9
+15
+waiting time
+0
+2
+5
+9

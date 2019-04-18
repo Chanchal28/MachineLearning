@@ -1,0 +1,45 @@
+#include<iostream>
+using namespace std;
+#include<algorithm>
+main()
+{
+	int a;
+	cout<<"enter the no of process";
+	cin>>a;
+	
+	int AT[a];
+	int BT[a];
+	int CT[a];int TAT[a];int WT[a]; 
+	for(int i=0;i<a;i++)
+	{
+		cout<<" Brust time ";
+		cin>>AT[i];
+	}
+	sort(AT,AT+a);
+	 for(int i=0;i<a;i++)
+	 {
+	 	BT[i]=AT[i];
+	 }
+	 
+	for(int i=1;i<a;i++)
+	{
+		BT[i]=BT[i-1]+BT[i];
+	}
+	for(int i=0;i<a;i++)
+	{
+		WT[i]=BT[i]-AT[i];
+	}
+	cout<<"result";
+	cout<<"turn arund  time\n";
+	for(int i=0;i<a;i++)
+	{
+		cout<<BT[i]<<"\n";
+	}
+	cout<<"waiting time\n";
+	for(int i=0;i<a;i++)
+	{
+		cout<<WT[i]<<"\n";
+	}
+	
+
+}
