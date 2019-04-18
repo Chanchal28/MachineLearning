@@ -1,0 +1,78 @@
+#include<iostream>
+using namespace std;
+main()
+{
+	int p,r,count=0;                             //p=no. of processes and r= no. of resources
+	cout<<"Enter no. of processes\n";
+	cin>>p;
+	cout<<"Enter no. of resourcess\n"; 
+	cin>>r;
+	
+	int ca[p][r],ma[p][r],av[r],ne[p][r],flag1[p],ans=0;      //ca=current allocation and ma=maximum allocation
+	                                                          //av=available resource and ne=need resource
+	count=p;
+	cout<<"\nEnter current allocation\n";
+	for(int i=0;i<p;i++)
+	{
+		for(int j=0;j<r;j++)
+		{
+			cin>>ca[i][j];
+		}
+	}
+	
+	cout<<"\nEnter max allocation\n";
+	for(int i=0;i<p;i++)
+	{   flag1[i]=0;
+		for(int j=0;j<r;j++)
+		{
+			cin>>ma[i][j];
+		}
+	}
+	
+	cout<<"\nEnter available\n";
+		for(int j=0;j<r;j++)
+		{
+			cin>>av[j];
+		}
+		
+		
+	    cout<<"\nNeed resources are\n";
+		for(int i=0;i<p;i++)
+	{
+		for(int j=0;j<r;j++)
+		{
+			ne[i][j]=ma[i][j]-ca[i][j];
+			cout<<ne[i][j]<<"  ";
+		}
+		cout<<endl;
+	}
+	
+	
+		while(count!=0)
+		{
+			for(int i=0;i<p;i++)
+			{   int flag=0;
+				for(int j=0;j<r;j++)
+				{
+					if(av[j]>=ne[i][j]&&flag1[i]!=1)
+					{
+						flag++;
+					}
+				}
+				if(flag==r)
+				{
+					for(int j=0;j<r;j++)
+					av[j]+=ma[i][j];		
+					flag1[i]=1;
+					ans++;
+					
+				} if(flag==r) break;
+			}count--;
+		}
+		
+		if(ans==p) cout<<"\nsafe\n";
+		
+		cout<<"Available resources at last\n";
+		for(int i=0;i<r;i++) cout<<av[i]<<" ";
+		cout<<endl;
+}
