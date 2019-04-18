@@ -1,0 +1,47 @@
+#include<iostream>
+using namespace std;
+int i;
+	int mutex =1,E=10,f=0,c=0;
+void producer()
+	{
+		mutex--;
+		f++;
+		E--;
+		c++;
+		cout<<"Producer produced\n"<<c;
+		mutex++;
+	}
+void consumer()
+{
+	mutex--;
+	f--;
+	E++;
+	c--;
+	cout<<"consumer consume\n"<<c;
+	mutex++;
+	
+}
+
+main()
+{
+	while(1)
+	{ cout<<"1- p 2-c 3-exit\n";
+		cout<<"Enter your choice\n";
+cin>>i;
+switch(i)
+{case 1: if(mutex==1 && E!=0)
+        {
+		producer();break;}
+        else
+        {
+		cout<<"producer is waiting\n";break;}
+ case 2: if(mutex==1 && f!=0)
+       {consumer();break;
+	   }else{cout<<"consumer is waiting\n";break;
+	   }
+case 3: exit(0);
+default:cout<<"invalid input\n";	         
+		}		
+	}
+
+}
