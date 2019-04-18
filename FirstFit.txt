@@ -1,0 +1,59 @@
+#include<iostream>
+using namespace std;  
+main()
+{
+	int p,b;                                //p = no. of process and b = memory blocks
+	cout<<"Enter no. of processes";
+	cin>>p;
+	cout<<"Enter no. of memory blocks";
+	cin>>b;
+	int size[p],used[b],hole[b];
+	int state[b]={0},an[p]={0};
+	
+	cout<<"Enter process size";
+	for(int i=0;i<p;i++) cin>>size[i];
+	
+	int choice;
+	cout<<"Enter choice"<<endl;
+	cout<<"Press 1 for used and 2 for hole"<<endl;
+	for(int i=0;i<b;i++)
+	{
+	    switch(choice)
+	    {
+	        case 1:
+	        {
+	            cin>>used[i];
+	            break;
+	        }
+	        case 2:
+	        {
+	            cin>>hole[i];
+	            break;
+	        }
+	    }
+	}
+	
+	int flag[b]; 
+	for(int i=0;i<b;i++)    flag[i]=0;
+	
+	for(int i=0;i<p;i++)
+	{  
+		for(int j=0;j<b;j++)
+		{   
+		    state[i]+=hole[j];
+			if(hole[j]>=size[i] && flag[j]==0 && used[j]==2)
+			{
+			    an[i]=state[i]-hole[j];
+				hole[j-1]=hole[j]+size[i];
+				hole[j]=hole[j]-size[i];
+				if(hole[j]>0) flag[j]=0; 
+				else flag[j]=1; 
+				break;
+			}
+	
+		}
+	}
+	
+	cout<<"Starting addresses are\n";
+	for(int i=0;i<p;i++) cout<<"For p"<<i+1<<" "<<an[i]<<"  \n";
+}

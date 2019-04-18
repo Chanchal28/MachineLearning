@@ -1,0 +1,27 @@
+Enter no. of processes 6
+Enter no. of memory blocks 3       
+Enter choice                                                                                                                    
+Press 1 for used and 2 for hole
+1                                                                                                
+Enter process size
+10  
+Press 1 for used and 2 for hole
+2                                                                                               
+Enter process size
+30 
+Press 1 for used and 2 for hole
+1                                                                                               
+Enter process size
+20 
+Press 1 for used and 2 for hole
+2                                                                                                
+Enter process size
+15
+Press 1 for used and 2 for hole
+1                                                                                            
+Enter process size
+10                                                                                                                          
+                                                                                               
+P1 = 10
+P2 = 35
+p3 = 20
